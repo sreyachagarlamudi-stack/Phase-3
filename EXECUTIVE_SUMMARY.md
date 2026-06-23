@@ -1,10 +1,8 @@
 # 24/7 Carbon-Free Energy for Datacenter Operations
 ## Executive Summary
-**Project:** Thermal Energy Storage (TES) Evaluation
-**Status:** Phase 3 Complete - Strategic Analysis
-**Confidential and Proprietary © Intersect**
 
----
+**Project:** Thermal Energy Storage (TES) Evaluation
+**Confidential and Proprietary © Intersect**
 
 ## Project Overview
 
@@ -13,8 +11,6 @@
 **Scope:** Three-phase analysis covering engineering validation, Python optimization modeling, and strategic system design to eliminate fossil fuel dependency.
 
 **Datacenter Specification:** 100 MW continuous load (876,000 MWh/year)
-
----
 
 ## Key Findings Summary
 
@@ -91,8 +87,6 @@
   - Operational learnings from Phase 1 reduce technical risk
   - Aligns with corporate net-zero commitments (2030-2040 timeframe)
 
----
-
 ## Technical Validation
 
 ### Steam Turbine Efficiency (Validated)
@@ -120,8 +114,6 @@
 - Steam turbine: 34-39% efficient (depending on load factor)
 - **Dominant loss:** Thermal-to-electric conversion efficiency (turbine)
 
----
-
 ## Baseline System Performance
 
 ### Current State (75.8% CFE)
@@ -140,8 +132,6 @@
 **Root Cause:** Gas backup at $40/MWh is cheaper than cycling electricity through TES at 32-33% round-trip efficiency (equivalent cost $121-125/MWh). Optimizer economically prefers gas over TES cycling.
 
 **Gap to 100% CFE:** 294,158 MWh/year (24.2 percentage points)
-
----
 
 ## Financial Analysis
 
@@ -178,8 +168,6 @@
 | LCOE | $81/MWh |
 | **Cost vs. 100% CFE** | **34% lower** |
 
----
-
 ## Risk Analysis
 
 ### Technical Risks
@@ -204,8 +192,6 @@
 |------|--------|---------------------|
 | 100% CFE has 88% LCOE premium vs. baseline ($113 vs. $60/MWh) | High | Phased approach: 90% CFE first ($81/MWh), then 100% as technology costs decline |
 | Technology costs may not decline as projected | Medium | 90% CFE target remains economically viable even without cost reductions |
-
----
 
 ## Recommendations
 
@@ -232,8 +218,6 @@
 - Structure financing to optimize tax equity returns
 - Consider green bonds or sustainability-linked financing for favorable rates
 
----
-
 ## Conclusion
 
 **TES is technically viable and economically competitive for achieving 24/7 carbon-free datacenter operations.**
@@ -254,7 +238,6 @@
 4. Financial structuring (tax equity, debt financing)
 5. Policy advocacy (IRA extension, carbon pricing support)
 
----
-
 **Project Repository:** `/Intern Project Phase 3 - Analysis/`
+
 **All technical parameters validated through NREL, EPA, MIT, and peer-reviewed sources.**
