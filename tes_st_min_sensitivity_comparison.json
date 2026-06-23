@@ -1,0 +1,29 @@
+{
+  "analysis_date": "2026-06-22",
+  "description": "TES steam turbine minimum load sensitivity analysis",
+  "expected_result": "$3-4/MWh cost reduction at 25% vs 40% minimum load",
+  "baseline": {
+    "tes_st_min": 40,
+    "tes_st_eff": 40,
+    "excel_file": "/Users/sreyachagarlamudi/Downloads/(PtXv3.4_r0) gjt_working.xlsx",
+    "results_file": "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 3 - Analysis/baseline_40pct_results.json",
+    "lcoe_MWh": 0,
+    "cfe_percent": "TO BE FILLED",
+    "annual_cost": "TO BE FILLED"
+  },
+  "test": {
+    "tes_st_min": 25,
+    "tes_st_eff": 40,
+    "excel_file": "/Users/sreyachagarlamudi/Downloads/(PtXv3.4_r0) gjt_working_test25.xlsx",
+    "results_file": "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 3 - Analysis/test_25pct_results.json",
+    "lcoe_MWh": 0,
+    "cfe_percent": "TO BE FILLED",
+    "annual_cost": "TO BE FILLED"
+  },
+  "comparison": {
+    "lcoe_delta_MWh": 0,
+    "lcoe_delta_percent": 0,
+    "cfe_delta": "TO BE CALCULATED",
+    "annual_cost_delta": "TO BE CALCULATED"
+  }
+}

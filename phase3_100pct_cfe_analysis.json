@@ -1,0 +1,79 @@
+{
+  "analysis_date": "2026-06-22T10:49:39.388091",
+  "scenarios": [
+    {
+      "scenario": "Baseline (78.3% CFE)",
+      "cfe_target": 78.3,
+      "solar_MW": 300,
+      "wind_MW": 50,
+      "tes_MW": 100,
+      "tes_duration_hr": 16,
+      "tes_capacity_MWh": 1600,
+      "gas_MW": 100,
+      "capex_before_itc_M": 599.0,
+      "itc_value_M": 155.7,
+      "capex_after_itc_M": 443.3,
+      "annual_opex_M": 14.535,
+      "lcoe_with_ira": 60.01689758438477,
+      "lcoe_without_ira": 75.26883540545512
+    },
+    {
+      "scenario": "90% CFE Target",
+      "cfe_target": 90.0,
+      "solar_MW": 400,
+      "wind_MW": 75,
+      "tes_MW": 150,
+      "tes_duration_hr": 24,
+      "tes_capacity_MWh": 3600,
+      "gas_MW": 50,
+      "capex_before_itc_M": 816.5,
+      "itc_value_M": 232.95,
+      "capex_after_itc_M": 583.55,
+      "annual_opex_M": 20.5725,
+      "lcoe_with_ira": 80.64751977639203,
+      "lcoe_without_ira": 103.4666521811341
+    },
+    {
+      "scenario": "100% CFE Target (Zero Gas)",
+      "cfe_target": 100.0,
+      "solar_MW": 500,
+      "wind_MW": 100,
+      "tes_MW": 200,
+      "tes_duration_hr": 48,
+      "tes_capacity_MWh": 9600,
+      "gas_MW": 0,
+      "capex_before_itc_M": 1194.0,
+      "itc_value_M": 358.2,
+      "capex_after_itc_M": 835.8,
+      "annual_opex_M": 33.01,
+      "lcoe_with_ira": 119.55528572263961,
+      "lcoe_without_ira": 154.64355886013098
+    },
+    {
+      "scenario": "100% CFE Optimized (High TES)",
+      "cfe_target": 100.0,
+      "solar_MW": 450,
+      "wind_MW": 80,
+      "tes_MW": 150,
+      "tes_duration_hr": 72,
+      "tes_capacity_MWh": 10800,
+      "gas_MW": 0,
+      "capex_before_itc_M": 1122.0,
+      "itc_value_M": 336.6,
+      "capex_after_itc_M": 785.4,
+      "annual_opex_M": 31.83,
+      "lcoe_with_ira": 113.27121030263787,
+      "lcoe_without_ira": 146.2436076730443
+    }
+  ],
+  "key_findings": {
+    "baseline_cfe": 78.3,
+    "baseline_lcoe": 60.01689758438477,
+    "target_100_cfe": 100.0,
+    "target_100_lcoe": 119.55528572263961,
+    "lcoe_premium_pct": 99.20270879470712,
+    "lcoe_premium_dollars": 59.53838813825484,
+    "capex_increase_pct": 88.5404917662982,
+    "recommendation": "78.3% CFE is economically optimal"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "analysis_date": "2026-06-22",
+  "scenarios": [
+    {
+      "scenario": "Baseline (78.3% CFE)",
+      "cfe_target": 78.3,
+      "capex_after_itc_M": 443.3,
+      "annual_opex_M": 14.535,
+      "lcoe_Project Finance (Typical Utility)": 60.01689758438477,
+      "lcoe_Google Corporate (High)": 45.65385300416135,
+      "lcoe_Google Corporate (Low)": 41.01619762105401,
+      "lcoe_Zero Discount (Pure Cash)": 36.83447488584475
+    },
+    {
+      "scenario": "100% CFE Target (Zero Gas)",
+      "cfe_target": 100.0,
+      "capex_after_itc_M": 835.8,
+      "annual_opex_M": 33.01,
+      "lcoe_Project Finance (Typical Utility)": 119.55528572263961,
+      "lcoe_Google Corporate (High)": 92.47513083847375,
+      "lcoe_Google Corporate (Low)": 83.73127257273697,
+      "lcoe_Zero Discount (Pure Cash)": 75.84703196347031
+    }
+  ],
+  "cost_of_capital_scenarios": {
+    "Project Finance (Typical Utility)": 0.07,
+    "Google Corporate (High)": 0.03,
+    "Google Corporate (Low)": 0.015,
+    "Zero Discount (Pure Cash)": 0.0
+  },
+  "key_findings": {
+    "baseline_lcoe_at_7pct": 60.01689758438477,
+    "baseline_lcoe_at_3pct": 45.65385300416135,
+    "baseline_lcoe_at_0pct": 36.83447488584475,
+    "target_100_lcoe_at_7pct": 119.55528572263961,
+    "target_100_lcoe_at_3pct": 92.47513083847375,
+    "target_100_lcoe_at_0pct": 75.84703196347031,
+    "premium_at_7pct_pct": 99.20270879470712,
+    "premium_at_3pct_pct": 102.55712224342739,
+    "premium_at_0pct_pct": 105.91316205411098,
+    "capex_difference_M": 392.49999999999994
+  }
+}

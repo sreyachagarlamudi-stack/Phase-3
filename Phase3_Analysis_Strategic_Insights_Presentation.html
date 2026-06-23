@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phase 3: Strategic Analysis</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #E8E8E8; margin: 0; padding: 20px 0; }
+        .slide { width: 960px; height: 540px; margin: 20px auto; background: #FFFFFF; position: relative; page-break-after: always; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .logo { position: absolute; top: 15px; left: 20px; height: 30px; }
+        .page-num { position: absolute; left: 885px; top: 517px; font-size: 14px; color: #707070; font-family: Arial, sans-serif; }
+        .title-slide { text-align: center; padding-top: 200px; }
+        .title-slide h1 { font-size: 48px; font-weight: bold; color: #000000; margin-bottom: 15px; }
+        .title-slide .date { font-size: 20px; color: #707070; }
+        .content { position: absolute; left: 20px; top: 18px; width: 920px; }
+        h1 { font-size: 24px; font-weight: bold; color: #000000; margin: 0 0 10px 0; }
+        h2 { font-size: 14px; font-weight: bold; color: #000000; margin: 12px 0 6px 0; text-transform: uppercase; }
+        p { font-size: 12px; color: #000000; line-height: 1.5; margin: 5px 0; }
+        ul { margin: 6px 0 6px 20px; padding: 0; list-style-type: disc; }
+        ul li { font-size: 12px; color: #000000; line-height: 1.5; margin: 3px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 11px; }
+        th { background: #D9D9D9; color: #000000; padding: 5px 8px; text-align: left; font-weight: bold; border: 1px solid #A6A6A6; }
+        td { padding: 5px 8px; border: 1px solid #D9D9D9; color: #000000; vertical-align: top; background: #FFFFFF; }
+        tr:nth-child(even) td { background: #F9F9F9; }
+        .highlight-row { background: #FFFF00 !important; }
+        .callout-box { background: #FFFFCC; border-left: 4px solid #FFFF00; padding: 8px 12px; margin: 8px 0; }
+        .key-finding { background: #FFFF00; padding: 6px 10px; margin: 8px 0; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="title-slide">
+        <h1>Path to 100% Carbon-Free Energy</h1>
+        <div class="date">June 2026</div>
+    </div>
+</div>
+
+<!-- Slide 2: Strategic Questions -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Strategic Questions Answered</h1>
+        <p>Phase 3 provides comprehensive analysis to support strategic decision-making on achieving 24/7 carbon-free energy for datacenter operations.</p>
+
+        <div class="key-finding">FOUR CORE QUESTIONS ANALYZED WITH PHASE 2 OPTIMIZATION MODEL</div>
+
+        <h2>Key Questions</h2>
+        <table style="background: transparent; border: none;">
+            <tr style="background: transparent;">
+                <td style="border: none; width: 5%; font-weight: bold; padding: 4px;">1.</td>
+                <td style="border: none; padding: 4px;">What is the optimal mix of wind, solar, and TES to achieve <strong>100% CFE</strong> at lowest LCOE?</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td style="border: none; font-weight: bold; padding: 4px;">2.</td>
+                <td style="border: none; padding: 4px;">How does TES compare to alternative <strong>LDES technologies</strong> (Li-ion, flow batteries, hydrogen)?</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td style="border: none; font-weight: bold; padding: 4px;">3.</td>
+                <td style="border: none; padding: 4px;">What is the impact of <strong>policy levers</strong> (IRA, carbon pricing, grid interconnection, RECs)?</td>
+            </tr>
+            <tr style="background: transparent;">
+                <td style="border: none; font-weight: bold; padding: 4px;">4.</td>
+                <td style="border: none; padding: 4px;">What is the <strong>strategic path</strong> to eliminate natural gas completely?</td>
+            </tr>
+        </table>
+
+        <h2>Methodology</h2>
+        <ul>
+            <li><strong>Optimization approach:</strong> Rolling 48-hour windows with tuning inputs to incentivize energy banking - more efficient and realistic than full-year MIP</li>
+            <li><strong>Optimization scenarios:</strong> 20+ combinations of solar (300-500 MW), wind (50-200 MW), TES (150-200 MW)</li>
+            <li><strong>Technology comparison:</strong> Capital costs, round-trip efficiency, and LCOE for TES, Li-ion, flow batteries, hydrogen</li>
+            <li><strong>Policy sensitivity:</strong> IRA 30% ITC, carbon pricing ($0-300/ton), 24/7 CFE RECs</li>
+            <li><strong>Phased deployment:</strong> 90% CFE intermediate target to reduce capital requirements and risk</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 3: Baseline vs 100% CFE -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Baseline Performance vs. 100% CFE Target</h1>
+
+        <div class="key-finding">CURRENT: 75.8% CFE (Baseline) → TARGET: 100% CFE (Zero Natural Gas)</div>
+
+        <h2>Baseline System: 75.8% CFE</h2>
+        <p><strong>Configuration:</strong> 300 MW solar + 50 MW wind + 100 MW TES (16-hour duration)</p>
+
+        <table>
+            <tr>
+                <th style="width: 25%;">Source</th>
+                <th style="width: 25%;">Annual Generation</th>
+                <th style="width: 20%;">Capacity Factor</th>
+                <th style="width: 30%;">% of Total Load</th>
+            </tr>
+            <tr>
+                <td>Solar</td>
+                <td>582,215 MWh</td>
+                <td>22.1%</td>
+                <td>66.5%</td>
+            </tr>
+            <tr>
+                <td>Wind</td>
+                <td>81,569 MWh</td>
+                <td>18.7%</td>
+                <td>9.3%</td>
+            </tr>
+            <tr>
+                <td>TES Discharge</td>
+                <td>7,177 MWh</td>
+                <td>0.8%</td>
+                <td>0.8%</td>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>Gas Backup (PROBLEM)</strong></td>
+                <td><strong>294,158 MWh</strong></td>
+                <td><strong>33.6%</strong></td>
+                <td><strong>33.6%</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Total Load</strong></td>
+                <td><strong>876,000 MWh</strong></td>
+                <td>—</td>
+                <td><strong>100%</strong></td>
+            </tr>
+        </table>
+
+        <div class="callout-box">
+            <strong>Root Cause Analysis:</strong> TES severely underutilized (0.8% capacity factor). Gas backup at $40/MWh is cheaper than cycling electricity through TES at 32-33% round-trip efficiency (equivalent cost $121-125/MWh). Optimizer economically prefers gas over TES.
+            <br><br>
+            <strong>Gap to 100% CFE:</strong> Must eliminate 294,158 MWh/year gas backup (24.2 percentage points). Requires larger renewable overbuild + TES capacity to cover multi-day renewable gaps.
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4: Answer 1 - Optimal System -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Answer 1: Optimal System for 100% CFE</h1>
+
+        <div class="key-finding">RESULT: 400 MW SOLAR + 125 MW WIND + 180 MW TES (44-HOUR DURATION)</div>
+
+        <h2>System Performance</h2>
+        <ul style="margin-bottom: 8px;">
+            <li><strong>Carbon-Free Energy:</strong> 100% (zero natural gas backup)</li>
+            <li><strong>LCOE:</strong> $113/MWh (with IRA 30% tax credit)</li>
+            <li><strong>Capital Investment:</strong> $788M net of IRA credits</li>
+            <li><strong>Technology Readiness:</strong> All components TRL 8-9 (commercially proven)</li>
+        </ul>
+
+        <h2>Pathway Analysis: Three Scenarios Tested</h2>
+        <table>
+            <tr>
+                <th style="width: 20%;">Scenario</th>
+                <th style="width: 25%;">Configuration</th>
+                <th style="width: 15%;">LCOE</th>
+                <th style="width: 15%;">Net CapEx</th>
+                <th style="width: 25%;">Trade-Off</th>
+            </tr>
+            <tr>
+                <td>1. Solar-Heavy</td>
+                <td>500 MW solar<br>75 MW wind<br>200 MW TES (48 hr)</td>
+                <td>$126/MWh</td>
+                <td>$895M</td>
+                <td>Higher solar overbuild, longer TES duration needed</td>
+            </tr>
+            <tr>
+                <td>2. Wind-Heavy</td>
+                <td>350 MW solar<br>150 MW wind<br>180 MW TES (44 hr)</td>
+                <td>$118/MWh</td>
+                <td>$818M</td>
+                <td>Better wind CF, but higher wind CapEx</td>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>3. BALANCED (RECOMMENDED)</strong></td>
+                <td><strong>400 MW solar<br>125 MW wind<br>180 MW TES (44 hr)</strong></td>
+                <td><strong>$113/MWh</strong></td>
+                <td><strong>$788M</strong></td>
+                <td><strong>Optimal: balances solar abundance with wind's evening generation</strong></td>
+            </tr>
+        </table>
+
+        <h2>Why Balanced Mix Wins</h2>
+        <ul>
+            <li><strong>Solar dominance (400 MW):</strong> Lowest CapEx ($1,500/kW), high daytime generation for TES charging</li>
+            <li><strong>Wind complement (125 MW):</strong> Fills evening/nighttime gaps when solar is zero</li>
+            <li><strong>TES sizing (180 MW, 44 hr):</strong> Handles multi-day renewable lulls without gas backup</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 5: Answer 2 - TES vs LDES -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Answer 2: TES vs. Alternative LDES Technologies</h1>
+        <p>For 44-hour, 180 MW system required to achieve 100% CFE, TES has lowest capital cost despite lower round-trip efficiency.</p>
+
+        <div class="key-finding">TES COST ADVANTAGE: $40/kWh vs $150-250/kWh for batteries (3-6X cheaper per unit storage)</div>
+
+        <table>
+            <tr>
+                <th style="width: 20%;">Technology</th>
+                <th style="width: 15%;">Net CapEx</th>
+                <th style="width: 15%;">Cost vs. TES</th>
+                <th style="width: 15%;">RTE</th>
+                <th style="width: 35%;">Key Trade-Off</th>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>TES (Thermal)</strong></td>
+                <td><strong>$523M</strong></td>
+                <td><strong>Baseline</strong></td>
+                <td><strong>33%</strong></td>
+                <td><strong>Lowest $/kWh ($40), but requires 3x renewable overbuild</strong></td>
+            </tr>
+            <tr>
+                <td>Hydrogen (H₂)</td>
+                <td>$611M</td>
+                <td>+17%</td>
+                <td>38%</td>
+                <td>Similar RTE to TES, but electrolyzer/fuel cell expensive. Best for seasonal.</td>
+            </tr>
+            <tr>
+                <td>Lithium-Ion</td>
+                <td>$1,028M</td>
+                <td>+97%</td>
+                <td>88%</td>
+                <td>High RTE, but $/kWh ($150-180) makes 44-hour duration prohibitively expensive.</td>
+            </tr>
+            <tr>
+                <td>Flow Battery</td>
+                <td>$1,258M</td>
+                <td>+141%</td>
+                <td>70%</td>
+                <td>Decoupled energy/power, but high $/kWh ($200-250) and pre-commercial (TRL 7-8).</td>
+            </tr>
+        </table>
+
+        <h2>Why TES Wins for 24/7 Datacenter CFE</h2>
+        <ul>
+            <li><strong>Long-duration cost advantage:</strong> $40/kWh beats all alternatives for 44-hour duration. Li-ion and flow batteries economically viable only for 2-4 hours.</li>
+            <li><strong>Renewable overbuild trade-off:</strong> TES's low RTE (33%) requires 400 MW solar + 125 MW wind to serve 100 MW load. However, renewable CapEx declining faster than battery costs.</li>
+            <li><strong>Commercial maturity:</strong> TES TRL 8-9 (Rondo, Anora deployments) vs. flow batteries TRL 7-8 (pre-commercial) reduces deployment risk.</li>
+            <li><strong>No geographic constraints:</strong> Unlike pumped hydro (requires elevation + water) or CAES (requires salt caverns), TES deployable anywhere.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 6: Answer 3A - IRA Impact -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Answer 3A: Policy Impact - IRA 30% Tax Credit</h1>
+
+        <div class="key-finding">IRA SECTION 48E: 30% INVESTMENT TAX CREDIT SAVES $461M (CRITICAL ENABLER)</div>
+
+        <h2>IRA Credit Details</h2>
+        <ul style="margin-bottom: 8px;">
+            <li><strong>Impact:</strong> Saves $461M on 100% CFE system (30% of gross CapEx $1,535M)</li>
+            <li><strong>Timeline:</strong> 30% credit available through 2032, then phases down</li>
+            <li><strong>Eligibility:</strong> Solar, wind, and energy storage (including TES) all qualify</li>
+        </ul>
+
+        <h2>Financial Impact on 100% CFE System</h2>
+        <table>
+            <tr>
+                <th style="width: 25%;">Component</th>
+                <th style="width: 20%;">Gross CapEx</th>
+                <th style="width: 20%;">IRA 30% Credit</th>
+                <th style="width: 20%;">Net CapEx</th>
+                <th style="width: 15%;">% Savings</th>
+            </tr>
+            <tr>
+                <td>Solar (400 MW)</td>
+                <td>$600M</td>
+                <td>-$180M</td>
+                <td>$420M</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>Wind (125 MW)</td>
+                <td>$187.5M</td>
+                <td>-$56.3M</td>
+                <td>$131.2M</td>
+                <td>30%</td>
+            </tr>
+            <tr>
+                <td>TES (180 MW, 44 hr)</td>
+                <td>$747.4M</td>
+                <td>-$224.2M</td>
+                <td>$523.2M</td>
+                <td>30%</td>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>TOTAL</strong></td>
+                <td><strong>$1,535M</strong></td>
+                <td><strong>-$461M</strong></td>
+                <td><strong>$1,074M</strong></td>
+                <td><strong>30%</strong></td>
+            </tr>
+        </table>
+
+        <h2>LCOE Impact</h2>
+        <table>
+            <tr>
+                <th style="width: 30%;">Scenario</th>
+                <th style="width: 25%;">Net CapEx</th>
+                <th style="width: 20%;">LCOE</th>
+                <th style="width: 25%;">LCOE Impact</th>
+            </tr>
+            <tr>
+                <td>Without IRA</td>
+                <td>$1,535M (gross)</td>
+                <td>$149/MWh</td>
+                <td>Baseline</td>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>With IRA 30% ITC</strong></td>
+                <td><strong>$1,074M (net)</strong></td>
+                <td><strong>$113/MWh</strong></td>
+                <td><strong>-24% reduction</strong></td>
+            </tr>
+        </table>
+
+        <div class="callout-box">
+            <strong>DEPLOYMENT TIMING CRITICAL:</strong> IRA 30% credit expires 2032. Deploy by 2031 to lock in $461M tax benefit before potential phase-out.
+        </div>
+    </div>
+</div>
+
+<!-- Slide 7: Answer 3B - Carbon Pricing -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Answer 3B: Policy Impact - Carbon Pricing</h1>
+        <p>Carbon pricing changes relative economics of gas backup vs. TES storage by adding cost to fossil fuel emissions.</p>
+
+        <div class="key-finding">CARBON PRICE CROSSOVER AT $200/TON: TES AND GAS BECOME ECONOMICALLY EQUIVALENT</div>
+
+        <h2>Carbon Pricing Scenarios</h2>
+        <table>
+            <tr>
+                <th style="width: 20%;">Carbon Price</th>
+                <th style="width: 25%;">Gas Cost (Base + Carbon)</th>
+                <th style="width: 25%;">TES Equivalent Cost</th>
+                <th style="width: 30%;">Economic Outcome</th>
+            </tr>
+            <tr>
+                <td>$0/ton (current)</td>
+                <td>$40/MWh</td>
+                <td>$125/MWh</td>
+                <td>Gas much cheaper - requires gas limit constraint to achieve 100% CFE</td>
+            </tr>
+            <tr>
+                <td>$100/ton</td>
+                <td>$80/MWh</td>
+                <td>$125/MWh</td>
+                <td>Gap narrows, but gas still cheaper</td>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>$200/ton</strong></td>
+                <td><strong>$120/MWh</strong></td>
+                <td><strong>$125/MWh</strong></td>
+                <td><strong>Crossover point - gas and TES economically equivalent</strong></td>
+            </tr>
+            <tr>
+                <td>$300/ton</td>
+                <td>$160/MWh</td>
+                <td>$125/MWh</td>
+                <td>TES cheaper than gas - 100% CFE achievable without explicit gas limit</td>
+            </tr>
+        </table>
+
+        <h2>Natural Gas Carbon Intensity</h2>
+        <p><strong>Emissions:</strong> 0.4 ton CO₂/MWh (EPA factor for natural gas combined-cycle plants)<br>
+        <strong>Effective cost with carbon price:</strong> Base cost + (Carbon price × Emissions)<br>
+        <strong>Example at $200/ton:</strong> $40/MWh base + ($200/ton × 0.4 ton/MWh) = $120/MWh effective cost</p>
+
+        <h2>Policy Outlook</h2>
+        <ul>
+            <li><strong>Current status:</strong> No federal carbon price in U.S. (as of 2026). Some states (CA, RGGI) have regional carbon markets.</li>
+            <li><strong>Trajectory:</strong> Biden administration proposed $25-50/ton carbon price, increasing to $100-150/ton by 2030.</li>
+            <li><strong>Impact on 100% CFE:</strong> At $100-200/ton carbon price, TES economics become competitive with gas backup even without IRA credits.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Slide 8: Answer 3C - RECs & Grid -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Answer 3C: Policy Impact - RECs & Interconnection</h1>
+
+        <div class="key-finding">24/7 CFE RECs: PREMIUM MARKET PAYING $15-25/MWH FOR HOURLY CARBON-FREE MATCHING</div>
+
+        <h2>24/7 Carbon-Free Energy RECs</h2>
+        <p>Emerging market for "24/7 CFE RECs" certify true hourly carbon-free matching (not annual net-zero). Google, Microsoft paying $15-25/MWh premium.</p>
+
+        <table>
+            <tr>
+                <th style="width: 30%;">REC Type</th>
+                <th style="width: 20%;">Price</th>
+                <th style="width: 50%;">Description</th>
+            </tr>
+            <tr>
+                <td>Standard REC</td>
+                <td>$2-5/MWh</td>
+                <td>Annual matching: 876,000 MWh renewable credits can offset 876,000 MWh total consumption</td>
+            </tr>
+            <tr class="highlight-row">
+                <td><strong>24/7 CFE REC</strong></td>
+                <td><strong>$15-25/MWh</strong></td>
+                <td><strong>Hourly matching: Every hour's consumption matched by same-hour renewable generation</strong></td>
+            </tr>
+        </table>
+
+        <h2>Revenue Impact on 100% CFE System</h2>
+        <ul style="margin-bottom: 8px;">
+            <li><strong>Annual generation:</strong> 876,000 MWh (100% CFE - all hours matched)</li>
+            <li><strong>REC revenue:</strong> 876,000 MWh × $15/MWh = $13.14M/year</li>
+            <li><strong>LCOE impact:</strong> $113/MWh - $15/MWh = $98/MWh effective (13% reduction)</li>
+        </ul>
+
+        <h2>Grid Interconnection: Off-Grid Advantage</h2>
+        <table>
+            <tr>
+                <th style="width: 30%;">Cost Component</th>
+                <th style="width: 25%;">On-Grid</th>
+                <th style="width: 25%;">Off-Grid</th>
+                <th style="width: 20%;">Savings</th>
+            </tr>
+            <tr>
+                <td>Interconnection CapEx</td>
+                <td>$100-200k/MW<br>(525 MW total)</td>
+                <td>$0</td>
+                <td>$52-105M</td>
+            </tr>
+            <tr>
+                <td>Interconnection Queue Time</td>
+                <td>2-5 years</td>
+                <td>0 years</td>
+                <td>Faster deployment</td>
+            </tr>
+            <tr>
+                <td>Grid Charges</td>
+                <td>$5-10/MWh</td>
+                <td>$0</td>
+                <td>$4-9M/year</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 9: Answer 4 - Strategic Path -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Answer 4: Strategic Path to 100% CFE</h1>
+
+        <div class="key-finding">PHASED DEPLOYMENT STRATEGY: 90% CFE (2027-2028) → 100% CFE (2030+)</div>
+
+        <h2>Phase 1: Deploy 90% CFE System (2027-2028)</h2>
+        <p><strong>Configuration:</strong> 400 MW solar + 75 MW wind + 150 MW TES (24-hour duration)</p>
+        <table>
+            <tr>
+                <th style="width: 25%;">Metric</th>
+                <th style="width: 25%;">Value</th>
+                <th style="width: 50%;">Rationale</th>
+            </tr>
+            <tr>
+                <td>Carbon-Free Energy</td>
+                <td>90%</td>
+                <td>Eliminates 90% of gas backup. Remaining 10% manageable through biogas or REC purchases.</td>
+            </tr>
+            <tr>
+                <td>LCOE</td>
+                <td>$81/MWh</td>
+                <td>Competitive with grid power in most U.S. regions ($70-100/MWh)</td>
+            </tr>
+            <tr>
+                <td>Net CapEx</td>
+                <td>$584M</td>
+                <td>34% lower than 100% CFE target - reduces financial risk</td>
+            </tr>
+            <tr>
+                <td>Deployment Timeline</td>
+                <td>2027-2028</td>
+                <td>Locks in IRA 30% credit ($258M) before 2032 expiration</td>
+            </tr>
+        </table>
+
+        <h2>Phase 2: Achieve 100% CFE (2030+)</h2>
+        <p><strong>Configuration:</strong> 400 MW solar + 125 MW wind + 180 MW TES (44-hour duration)</p>
+        <table>
+            <tr>
+                <th style="width: 25%;">Metric</th>
+                <th style="width: 25%;">Value</th>
+                <th style="width: 50%;">Rationale</th>
+            </tr>
+            <tr>
+                <td>Carbon-Free Energy</td>
+                <td>100%</td>
+                <td>Complete elimination of fossil fuel backup</td>
+            </tr>
+            <tr>
+                <td>LCOE</td>
+                <td>$113/MWh</td>
+                <td>Technology cost reductions by 2030 may lower to $95-100/MWh</td>
+            </tr>
+            <tr>
+                <td>Net CapEx</td>
+                <td>$788M</td>
+                <td>Incremental investment: $204M above Phase 1</td>
+            </tr>
+            <tr>
+                <td>Drivers</td>
+                <td>—</td>
+                <td>Carbon pricing ($100-200/ton) improves economics. 24/7 CFE REC market mature.</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Slide 10: Summary -->
+<div class="slide">
+    <img src="intersect_logo.png" class="logo" alt="Intersect">
+    <div class="page-num">‹#›</div>
+    <div class="content">
+        <h1>Phase 3 Summary: Strategic Insights</h1>
+
+        <div class="key-finding">FOUR CORE QUESTIONS ANSWERED - PATH TO 100% CFE CLEAR AND ACHIEVABLE</div>
+
+        <h2>Key Findings</h2>
+        <ul>
+            <li><strong>Optimal 100% CFE system:</strong> 400 MW solar + 125 MW wind + 180 MW TES (44 hr) → $113/MWh, $788M net CapEx</li>
+            <li><strong>TES cost advantage:</strong> $523M vs. Li-ion $1,028M (97% cheaper) - cost advantage dominates despite lower RTE</li>
+            <li><strong>IRA critical enabler:</strong> 30% ITC saves $461M (reduces LCOE from $149 to $113/MWh). Deploy by 2031.</li>
+            <li><strong>Phased path reduces risk:</strong> Phase 1 (90% CFE, $81/MWh, $584M) by 2028, then Phase 2 (100% CFE) by 2030+</li>
+        </ul>
+
+        <h2>Key Enablers for 100% CFE</h2>
+        <ul>
+            <li><strong>IRA 30% tax credit:</strong> Reduces CapEx from $1,535M to $1,074M (-30%). Must deploy by 2031 to capture full benefit.</li>
+            <li><strong>TES cost advantage:</strong> $40/kWh storage (vs. $150-180 for Li-ion) makes 44-hour duration economically feasible.</li>
+            <li><strong>Commercially proven technology:</strong> All components TRL 8-9 (Rondo, Anora TES; GE, Siemens turbines) reduces deployment risk.</li>
+            <li><strong>Off-grid deployment:</strong> Avoids $52-105M interconnection costs and 2-5 year queue delays.</li>
+        </ul>
+
+        <div class="callout-box">
+            <strong>NEXT STEPS</strong><br>
+            • Approval to proceed with Phase 1 detailed engineering (90% CFE system, $584M)<br>
+            • Site selection and permitting initiation<br>
+            • Vendor engagement (Rondo Energy, Anora for TES; GE Vernova, Siemens for turbines)<br>
+            • Financial structuring (tax equity for IRA credits, debt financing)<br>
+            • Policy advocacy (IRA extension beyond 2032, carbon pricing support)
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
