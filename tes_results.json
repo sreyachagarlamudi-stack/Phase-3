@@ -1,7 +1,7 @@
 {
-  "timestamp": "2026-06-24T16:44:32.585799",
-  "model_version": "corrected_v4_boiler_steam_header",
-  "architecture": "Boiler + Steam Header (replaces NGPP)",
+  "timestamp": "2026-06-24T16:51:46.936911",
+  "model_version": "v4_boiler_steam_header",
+  "architecture": "Boiler + Steam Header with Multi-Block Turbine",
   "turbine_config": {
     "num_blocks": 4,
     "block_size_MW": 25,
@@ -16,13 +16,12 @@
   },
   "resource_data": {
     "solar_cf_avg": 0.31,
-    "wind_cf_avg": 0.5,
-    "note": "Roman-style profiles with target CFs"
+    "wind_cf_avg": 0.5
   },
   "marginal_costs": {
     "tes_discharge": 3.0,
     "boiler_path": 49.310338259746004,
-    "tes_advantage": 46.310338259746004
+    "differential": 46.310338259746004
   },
   "annual_MWh": {
     "solar": 814680.0,
@@ -40,11 +39,11 @@
     "boiler": 0.28192815968892054
   },
   "block_utilization_hours": {
-    "0_blocks": 6963,
-    "1_blocks": 279,
-    "2_blocks": 172,
-    "3_blocks": 748,
-    "4_blocks": 598
+    "0_blocks": 3659,
+    "1_blocks": 315,
+    "2_blocks": 128,
+    "3_blocks": 2251,
+    "4_blocks": 2407
   },
   "variable_costs_M_per_year": {
     "tes": 0.34086337525943067,
