@@ -1,0 +1,59 @@
+{
+  "timestamp": "2026-06-24T16:44:32.585799",
+  "model_version": "corrected_v4_boiler_steam_header",
+  "architecture": "Boiler + Steam Header (replaces NGPP)",
+  "turbine_config": {
+    "num_blocks": 4,
+    "block_size_MW": 25,
+    "total_capacity_MW": 100,
+    "efficiency": 0.39
+  },
+  "boiler_config": {
+    "thermal_capacity_MW": 256.4102564102564,
+    "electric_equivalent_MW": 100,
+    "efficiency": 0.85,
+    "fuel_price_per_mmbtu": 4.0
+  },
+  "resource_data": {
+    "solar_cf_avg": 0.31,
+    "wind_cf_avg": 0.5,
+    "note": "Roman-style profiles with target CFs"
+  },
+  "marginal_costs": {
+    "tes_discharge": 3.0,
+    "boiler_path": 49.310338259746004,
+    "tes_advantage": 46.310338259746004
+  },
+  "annual_MWh": {
+    "solar": 814680.0,
+    "wind": 219000.0,
+    "tes_output": 113621.1250864769,
+    "boiler_output": 246969.0678874944,
+    "boiler_thermal": 633254.0202243446,
+    "curtailment": 210957.09272003558,
+    "load": 876000.0
+  },
+  "capacity_factors": {
+    "solar": 0.31,
+    "wind": 0.5,
+    "tes": 0.12970448069232524,
+    "boiler": 0.28192815968892054
+  },
+  "block_utilization_hours": {
+    "0_blocks": 6963,
+    "1_blocks": 279,
+    "2_blocks": 172,
+    "3_blocks": 748,
+    "4_blocks": 598
+  },
+  "variable_costs_M_per_year": {
+    "tes": 0.34086337525943067,
+    "boiler": 12.178128277226522,
+    "boiler_fuel": 10.170713033115351,
+    "boiler_opex": 1.266508040448689,
+    "boiler_turbine_opex": 0.7409072036624833
+  },
+  "performance": {
+    "cfe_pct": 130.9704480692325
+  }
+}
