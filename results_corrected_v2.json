@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-06-24T15:26:00.590109",
+  "model_version": "corrected_v2",
+  "resource_data": {
+    "solar_cf_avg": 0.31,
+    "wind_cf_avg": 0.5,
+    "note": "Roman-style profiles with target CFs"
+  },
+  "marginal_costs": {
+    "tes": 3.0,
+    "gas": 48.0,
+    "tes_advantage": 45.0
+  },
+  "annual_MWh": {
+    "solar": 814680.0,
+    "wind": 219000.0,
+    "tes_output": 113628.1908401287,
+    "gas": 246962.00213384264,
+    "curtailment": 210957.09272003558,
+    "load": 876000.0
+  },
+  "capacity_factors": {
+    "solar": 0.31,
+    "wind": 0.5,
+    "tes": 0.12971254662115148,
+    "gas": 0.28192009376009436
+  },
+  "performance": {
+    "cfe_pct": 130.97125466211517
+  }
+}
