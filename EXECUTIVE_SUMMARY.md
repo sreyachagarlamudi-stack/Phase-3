@@ -89,8 +89,18 @@
 
 ## Technical Validation
 
+### Data Quality Clarifications
+
+**Wind Capacity Factor (18.7%):** Based on resource profile used in model. Typical commercial wind ranges 25-35% (onshore) to 40-50% (offshore). Requires site-specific validation.
+
+**Solar Resource Basis:** Requires verification whether generation data is DC (nameplate) or AC (after inverter). Impacts all solar calculations by 2-5%.
+
+**Water Usage (Steam Turbine):** 300-500 gallons/MWh for evaporative cooling in condenser loop. Additional 20-40 gallons/MWh for blowdown.
+
 ### Steam Turbine Efficiency (Validated)
 **Critical Clarification:** 40% is the **minimum operating load** (physics constraint), NOT the efficiency.
+
+**Recommended Update:** Model multiple small turbine blocks (25-50 MW) for turndown flexibility at constant high efficiency, eliminating efficiency curve complexity.
 
 | Load Factor | Turbine Efficiency | Electric Output (100 MW thermal) | Round-Trip Efficiency |
 |-------------|-------------------|--------------------------------|---------------------|
@@ -130,6 +140,10 @@
 **Key Finding:** TES is severely underutilized (0.8% capacity factor) in baseline configuration.
 
 **Root Cause:** Gas backup at $40/MWh is cheaper than cycling electricity through TES at 32-33% round-trip efficiency (equivalent cost $121-125/MWh). Optimizer economically prefers gas over TES cycling.
+
+**Solar Curtailment:** Significant solar generation curtailed during oversupply periods rather than stored in TES due to efficiency penalty.
+
+**Model Limitation:** Baseline includes gas competition. Zero-gas constraint scenarios required to demonstrate true TES utilization for 100% CFE.
 
 **Gap to 100% CFE:** 294,158 MWh/year (24.2 percentage points)
 
@@ -192,6 +206,42 @@
 |------|--------|---------------------|
 | 100% CFE has 88% LCOE premium vs. baseline ($113 vs. $60/MWh) | High | Phased approach: 90% CFE first ($81/MWh), then 100% as technology costs decline |
 | Technology costs may not decline as projected | Medium | 90% CFE target remains economically viable even without cost reductions |
+
+## Model Improvements Required
+
+### 1. **Steam Turbine Architecture**
+**Current:** Single turbine with efficiency curve (40% minimum load constraint)
+**Recommended:** Multiple small turbine blocks (25-50 MW each)
+
+**Benefits:**
+- Turndown flexibility without efficiency penalty
+- Operate blocks at constant high efficiency (~39%)
+- Matches Antora commercial approach
+
+**Implementation:** Fix total steam turbine capacity = 100 MW datacenter load
+
+### 2. **Replace NGPP with Boiler Configuration**
+**Rationale:** Lower CapEx for high-CFE systems where backup is rarely used
+
+**Architecture:**
+- Steam header receiving heat from TES OR boiler
+- Fuel parameters: $/MMBTU, CFE% (enables natural gas, renewable diesel, etc.)
+- Single steam turbine for all heat sources
+
+**Cost Advantage:** Boiler CapEx significantly lower than combined cycle power plant
+
+### 3. **Separate TES Cost Optimization**
+**Components:**
+- Charge capacity: Electric heaters ($/kW)
+- Discharge capacity: Steam turbine ($/kW) - fixed at load
+- Energy storage: Thermal mass ($/kWh)
+
+**Enables:** Independent optimization of power vs energy sizing
+
+### 4. **Add BESS as Optimization Dimension**
+**Purpose:** Short-duration storage (hours) complements long-duration TES (days)
+**Variables:** BESS power capacity, BESS energy capacity
+**Benefit:** Reduces TES cycling and improves economics
 
 ## Recommendations
 
