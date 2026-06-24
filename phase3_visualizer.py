@@ -99,7 +99,7 @@ class Phase3Visualizer:
 
         plt.tight_layout()
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        print(f"✓ Scenario comparison saved: {output_path}")
+        print(f"Success: Scenario comparison saved: {output_path}")
 
     def plot_dispatch_heatmap(self, dispatch_df, output_path, num_days=14):
         """Create heatmap of dispatch patterns"""
@@ -161,7 +161,7 @@ class Phase3Visualizer:
 
         plt.tight_layout()
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        print(f"✓ Dispatch heatmap saved: {output_path}")
+        print(f"Success: Dispatch heatmap saved: {output_path}")
 
     def plot_ira_impact(self, with_ira, without_ira, output_path):
         """Visualize IRA tax credit impact"""
@@ -225,7 +225,7 @@ class Phase3Visualizer:
 
         plt.tight_layout()
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        print(f"✓ IRA impact visualization saved: {output_path}")
+        print(f"Success: IRA impact visualization saved: {output_path}")
 
 
 # Example usage

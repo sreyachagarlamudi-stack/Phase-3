@@ -238,7 +238,7 @@ class ThermalES(LDESSystem):
         """
         TES has minimal cycle degradation (mechanical/thermal system).
 
-        Note: This is a simplification. Real degradation includes:
+        Documentation: This is a simplification. Real degradation includes:
         - Refractory material degradation over time
         - Thermal cycling stress
         - Insulation degradation

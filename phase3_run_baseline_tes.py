@@ -201,7 +201,7 @@ try:
     )
 
     print()
-    print("✓ Optimization completed successfully!")
+    print("Success: Optimization completed successfully!")
     print()
 
     # ============================================================================
@@ -243,7 +243,7 @@ try:
     # Save detailed dispatch results
     csv_path = f"{output_dir}/phase3_baseline_dispatch.csv"
     results_df.to_csv(csv_path, index=True)
-    print(f"  ✓ Dispatch data saved: {csv_path}")
+    print(f"  Success: Dispatch data saved: {csv_path}")
 
     # Save summary metrics
     summary = {
@@ -262,7 +262,7 @@ try:
     json_path = f"{output_dir}/phase3_baseline_results.json"
     with open(json_path, 'w') as f:
         json.dump(summary, f, indent=2)
-    print(f"  ✓ Summary saved: {json_path}")
+    print(f"  Success: Summary saved: {json_path}")
 
     print()
     print("=" * 70)
@@ -277,7 +277,7 @@ try:
 
 except Exception as e:
     print()
-    print(f"✗ Error during optimization: {str(e)}")
+    print(f"Error: Error during optimization: {str(e)}")
     print()
     print("Troubleshooting:")
     print("  - Check that CPLEX solver is installed")

@@ -319,7 +319,7 @@ print()
 output_dir = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 3 - Analysis"
 
 df.to_csv(f"{output_dir}/phase3_google_cost_of_capital_comparison.csv", index=False)
-print(f"✓ Saved: phase3_google_cost_of_capital_comparison.csv")
+print(f"Success: Saved: phase3_google_cost_of_capital_comparison.csv")
 
 summary = {
     'analysis_date': '2026-06-22',
@@ -342,7 +342,7 @@ summary = {
 with open(f"{output_dir}/phase3_google_cost_of_capital_analysis.json", 'w') as f:
     json.dump(summary, f, indent=2)
 
-print(f"✓ Saved: phase3_google_cost_of_capital_analysis.json")
+print(f"Success: Saved: phase3_google_cost_of_capital_analysis.json")
 print()
 
 print("="*80)

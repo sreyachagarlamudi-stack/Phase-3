@@ -26,7 +26,7 @@ sys.path.insert(0, "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~
 try:
     from pyomo_06_loader import load_vars, load_svar, load_dfopsx
 except:
-    print("Note: Using simplified loader")
+    print("Documentation: Using simplified loader")
 
 print("="*80)
 print("TES STEAM TURBINE MINIMUM LOAD SENSITIVITY - FULL RUN")
@@ -51,7 +51,7 @@ print("-" * 60)
 if not os.path.exists(excel_test):
     print(f"Copying baseline to test file...")
     shutil.copy(excel_baseline, excel_test)
-    print(f"  ✓ Created: {excel_test}")
+    print(f"  Success: Created: {excel_test}")
 
     # Modify tes_st_min to 25%
     wb = openpyxl.load_workbook(excel_test)
@@ -63,20 +63,20 @@ if not os.path.exists(excel_test):
         if row[0].value == 'tes_st_min':
             old_value = row[2].value
             row[2].value = 25.0
-            print(f"  ✓ Changed tes_st_min: {old_value}% → 25%")
+            print(f"  Success: Changed tes_st_min: {old_value}% → 25%")
             found = True
             break
 
     if not found:
-        print("  ✗ ERROR: tes_st_min not found in TES sheet!")
+        print("  Error: ERROR: tes_st_min not found in TES sheet!")
         print("  Please run phase3_tes_st_min_sensitivity.py first")
         sys.exit(1)
 
     wb.save(excel_test)
     wb.close()
-    print(f"  ✓ Saved: {excel_test}")
+    print(f"  Success: Saved: {excel_test}")
 else:
-    print(f"  ✓ Test file already exists: {excel_test}")
+    print(f"  Success: Test file already exists: {excel_test}")
 
 print()
 
@@ -191,7 +191,7 @@ comparison_file = f"{output_dir}/tes_st_min_sensitivity_comparison.json"
 with open(comparison_file, 'w') as f:
     json.dump(comparison_template, f, indent=2)
 
-print(f"✓ Created comparison template: {comparison_file}")
+print(f"Success: Created comparison template: {comparison_file}")
 print()
 
 # ============================================================================
@@ -204,8 +204,8 @@ print("="*80)
 print()
 
 print("FILES CREATED:")
-print(f"  ✓ Test Excel: {excel_test}")
-print(f"  ✓ Comparison template: {comparison_file}")
+print(f"  Success: Test Excel: {excel_test}")
+print(f"  Success: Comparison template: {comparison_file}")
 print()
 
 print("NEXT STEPS:")
@@ -271,7 +271,7 @@ try:
     print()
 
     if abs(delta_MWh) >= 3 and abs(delta_MWh) <= 5:
-        print("✓ Result matches expected range ($3-4/MWh savings)")
+        print("Success: Result matches expected range ($3-4/MWh savings)")
     else:
         print(f"⚠️  Result outside expected range (expected: $3-4/MWh, got: ${abs(delta_MWh):.2f}/MWh)")
     print()
@@ -288,7 +288,7 @@ try:
     with open(comparison_file, 'w') as f:
         json.dump(comp, f, indent=2)
 
-    print(f"✓ Updated: {comparison_file}")
+    print(f"Success: Updated: {comparison_file}")
 
 except FileNotFoundError as e:
     print("Error: Result files not found")
@@ -302,7 +302,7 @@ comparison_script_file = f"{output_dir}/compare_tes_st_min_results.py"
 with open(comparison_script_file, 'w') as f:
     f.write(comparison_script)
 
-print(f"  ✓ Created: {comparison_script_file}")
+print(f"  Success: Created: {comparison_script_file}")
 print()
 
 print("="*80)

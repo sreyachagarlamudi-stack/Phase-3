@@ -29,7 +29,7 @@ try:
     with open(baseline_file, 'r') as f:
         baseline = json.load(f)
 
-    print(f"✓ Loaded baseline: {baseline_file}")
+    print(f"Success: Loaded baseline: {baseline_file}")
     print(f"  Configuration: {baseline['scenario']['window_size']}hr windows")
     print()
 
@@ -54,7 +54,7 @@ try:
     print()
 
 except FileNotFoundError:
-    print("✗ Baseline results not found. Using example values.")
+    print("Error: Baseline results not found. Using example values.")
     total_load_MWh = 876000
     tes_discharge_MWh = 24090
     gas_MMBtu = 2239272
@@ -242,7 +242,7 @@ for option, details in INTERCONNECTION.items():
     print(f"  Grid Upgrade Cost:   ${details['grid_upgrade_cost']:>12,}")
     print(f"  Total Cost:          ${total_cost:>12,}")
     print(f"  Timeline:            {details['timeline_months']} months")
-    print(f"  Note:                {details['note']}")
+    print(f"  Documentation:                {details['note']}")
 print()
 
 # ============================================================================
@@ -404,5 +404,5 @@ print(f"1. IRA tax credits reduce LCOE by ${lcoe_baseline - lcoe_ira:.2f}/MWh ({
 print(f"2. Carbon pricing adds ${(lcoe_ira_ca - lcoe_ira):.2f}-${(lcoe_ira_agg - lcoe_ira):.2f}/MWh depending on policy")
 print(f"3. Off-grid avoids ${INTERCONNECTION['transmission_connect']['connection_cost'] + INTERCONNECTION['transmission_connect']['grid_upgrade_cost']:,.0f} in grid connection costs")
 print()
-print("✓ Results saved: phase3_policy_analysis.json")
+print("Success: Results saved: phase3_policy_analysis.json")
 print("="*80)

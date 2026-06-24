@@ -239,7 +239,7 @@ class TES_vs_LDES_Comparator:
 
         plt.tight_layout()
         plt.savefig(output_path, dpi=300, bbox_inches='tight')
-        print(f"✓ Duration crossover plot saved: {output_path}")
+        print(f"Success: Duration crossover plot saved: {output_path}")
 
 
 # Run comparison
@@ -266,4 +266,4 @@ if __name__ == "__main__":
     output_path = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 2/tes_vs_ldes_duration_analysis.png"
     comparator.plot_duration_crossover(output_path)
 
-    print("\n✓ TES vs LDES comparison complete!")
+    print("\nSuccess: TES vs LDES comparison complete!")

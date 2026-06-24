@@ -353,7 +353,7 @@ output_dir = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudD
 
 # Save comparison table
 comparison_df.to_csv(f"{output_dir}/phase3_100pct_cfe_comparison.csv", index=False)
-print(f"✓ Saved: phase3_100pct_cfe_comparison.csv")
+print(f"Success: Saved: phase3_100pct_cfe_comparison.csv")
 
 # Save detailed results
 results_data = {
@@ -374,7 +374,7 @@ results_data = {
 with open(f"{output_dir}/phase3_100pct_cfe_analysis.json", 'w') as f:
     json.dump(results_data, f, indent=2)
 
-print(f"✓ Saved: phase3_100pct_cfe_analysis.json")
+print(f"Success: Saved: phase3_100pct_cfe_analysis.json")
 print()
 
 print("="*80)

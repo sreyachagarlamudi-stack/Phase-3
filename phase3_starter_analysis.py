@@ -167,7 +167,7 @@ def run_tes_scenario(config, weather_data):
     results = solver.solve(m, tee=False)
 
     if results.solver.termination_condition != pyo.TerminationCondition.optimal:
-        print(f"  ✗ Solver failed: {results.solver.termination_condition}")
+        print(f"  Error: Solver failed: {results.solver.termination_condition}")
         return None
 
     # Extract results
@@ -209,9 +209,9 @@ def run_tes_scenario(config, weather_data):
         'turbine_hours': int((df['turbine_out'] > 0.01).sum()),
     }
 
-    print(f"  ✓ CFE: {cfe_pct:.1f}%")
-    print(f"  ✓ Cost: ${total_cost:,.0f} (${metrics['cost_per_MWh']:.2f}/MWh)")
-    print(f"  ✓ Gas usage: {total_gas:.0f} MWh ({metrics['gas_hours']} hours)")
+    print(f"  Success: CFE: {cfe_pct:.1f}%")
+    print(f"  Success: Cost: ${total_cost:,.0f} (${metrics['cost_per_MWh']:.2f}/MWh)")
+    print(f"  Success: Gas usage: {total_gas:.0f} MWh ({metrics['gas_hours']} hours)")
 
     return {'config': config, 'metrics': metrics, 'dispatch': df}
 
@@ -298,7 +298,7 @@ output_dir = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudD
 
 # Save comparison
 comparison.to_csv(f"{output_dir}/phase3_scenario_comparison.csv", index=False)
-print(f"\n✓ Comparison saved: phase3_scenario_comparison.csv")
+print(f"\nSuccess: Comparison saved: phase3_scenario_comparison.csv")
 
 # Save detailed results
 for result in all_results:
@@ -315,7 +315,7 @@ summary = {
 with open(f"{output_dir}/phase3_summary.json", 'w') as f:
     json.dump(summary, f, indent=2)
 
-print(f"✓ Summary saved: phase3_summary.json")
+print(f"Success: Summary saved: phase3_summary.json")
 
 print(f"\n{'='*70}")
 print("PHASE 3 STARTER ANALYSIS COMPLETE!")

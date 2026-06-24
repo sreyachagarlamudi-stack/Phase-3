@@ -192,7 +192,7 @@ try:
     solver = pyo.SolverFactory('appsi_highs')
     solver.available(exception_flag=True)
 
-    print("✓ Phase 2 module and HiGHS solver ready!\n")
+    print("Success: Phase 2 module and HiGHS solver ready!\n")
 
     # ========================================================================
     # STAGE 1: COARSE SWEEP
@@ -347,12 +347,12 @@ try:
         json.dump(summary, f, indent=2)
 
     print()
-    print("✓ Results saved:")
+    print("Success: Results saved:")
     print("  - phase3_optimization_results.csv")
     print("  - phase3_optimization_summary.json")
 
 except Exception as e:
-    print(f"✗ Error: {e}")
+    print(f"Error: Error: {e}")
     import traceback
     traceback.print_exc()
 

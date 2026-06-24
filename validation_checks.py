@@ -67,7 +67,7 @@ def validate_optimization_results(results_df, tes_capacity_kWh, turbine_capacity
                 errors.append(f"Energy imbalance at hour {t}: Gen={generation:.2f} kW, Load={load:.2f} kW, Diff={imbalance:.2f} kW")
 
         if not any("Energy imbalance" in e for e in errors):
-            print(f"   ✓ PASS: Energy balance maintained (tolerance: 1 kW)")
+            print(f"   Success: PASS: Energy balance maintained (tolerance: 1 kW)")
         else:
             print(f"   ❌ FAIL: {sum(1 for e in errors if 'Energy imbalance' in e)} hours with imbalance")
 
@@ -89,7 +89,7 @@ def validate_optimization_results(results_df, tes_capacity_kWh, turbine_capacity
             print(f"   ❌ FAIL: SOC > capacity in {soc_above_max} hours")
 
         if soc_below_zero == 0 and soc_above_max == 0:
-            print(f"   ✓ PASS: SOC within bounds [0, {tes_capacity_kWh:.0f} kWh]")
+            print(f"   Success: PASS: SOC within bounds [0, {tes_capacity_kWh:.0f} kWh]")
             print(f"           Min SOC: {results_df['TXt'].min():.2f} kWh")
             print(f"           Max SOC: {results_df['TXt'].max():.2f} kWh")
     else:
@@ -121,7 +121,7 @@ def validate_optimization_results(results_df, tes_capacity_kWh, turbine_capacity
 
         if violations == 0:
             operating_hours = (results_df['Kstt'] > 0.5).sum()
-            print(f"   ✓ PASS: No minimum load violations")
+            print(f"   Success: PASS: No minimum load violations")
             print(f"           Operating hours: {operating_hours}")
             print(f"           Minimum electric output: {min_electric_power:.0f} kW")
             print(f"           (= {turbine_capacity_kW:.0f} kW × {turbine_efficiency:.0%} eff × {min_turbine_load_fraction:.0%} min load)")
@@ -155,7 +155,7 @@ def validate_optimization_results(results_df, tes_capacity_kWh, turbine_capacity
             total_to_tes = results_df['SolarToTES'].sum()
             total_curtailed = results_df['Scurtt'].sum()
 
-            print(f"   ✓ PASS: Solar allocation balanced")
+            print(f"   Success: PASS: Solar allocation balanced")
             print(f"           Total solar: {total_solar/1e6:.2f} GWh")
             print(f"           To load: {total_to_load/1e6:.2f} GWh ({total_to_load/total_solar*100:.1f}%)")
             print(f"           To TES: {total_to_tes/1e6:.2f} GWh ({total_to_tes/total_solar*100:.1f}%)")
@@ -186,7 +186,7 @@ def validate_optimization_results(results_df, tes_capacity_kWh, turbine_capacity
                     unusual_efficiency += 1
 
         if unusual_efficiency == 0:
-            print(f"   ✓ PASS: All efficiencies in expected range (25-50%)")
+            print(f"   Success: PASS: All efficiencies in expected range (25-50%)")
         else:
             print(f"   ⚠️  WARNING: {unusual_efficiency} hours with unusual efficiency")
             print(f"              (Typical range: 25-50% for steam turbines)")
@@ -227,7 +227,7 @@ def validate_optimization_results(results_df, tes_capacity_kWh, turbine_capacity
     print("=" * 80)
 
     if len(errors) == 0 and len(warnings) == 0:
-        print("✓ ALL CHECKS PASSED - No errors or warnings")
+        print("Success: ALL CHECKS PASSED - No errors or warnings")
     else:
         if len(errors) > 0:
             print(f"\n❌ ERRORS FOUND: {len(errors)}")
@@ -282,7 +282,7 @@ def validate_solar_allocation_detailed(results_df):
             priority_violations += 1
 
     if priority_violations == 0:
-        print("✓ Solar allocation priority logic validated")
+        print("Success: Solar allocation priority logic validated")
     else:
         print(f"⚠️  {priority_violations} hours with potential priority violations")
 

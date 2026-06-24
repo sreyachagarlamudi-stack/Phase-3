@@ -57,7 +57,7 @@ print()
 
 print("Step 2: Configuring scenario...")
 
-# Build scenario dictionary for your module
+# Build scenario dictionary for the module
 vars_config = {
     # Time horizon
     'dispatch_time': 8760,  # Full year analysis
@@ -210,7 +210,7 @@ svar = {
 
     # TES (key parameters!)
     'tesD_kW': 100000,     # 100 MW discharge (thermal)
-    # Note: Charge and capacity calculated from duration and CD ratio in module
+    # Documentation: Charge and capacity calculated from duration and CD ratio in module
 
     # Grid
     'maxExpMW': 0,         # No export
@@ -238,7 +238,7 @@ try:
     spec.loader.exec_module(module)
     roll_cfe = module.roll_cfe
 
-    print("✓ Successfully imported pyomo_DTC_CPLEX_TES!")
+    print("Success: Successfully imported pyomo_DTC_CPLEX_TES!")
     print()
 
     # Check HiGHS solver (free, no size limits)
@@ -246,10 +246,10 @@ try:
     try:
         solver = pyo.SolverFactory('appsi_highs')
         solver.available(exception_flag=True)
-        print("✓ HiGHS solver is available! (No size limits)")
+        print("Success: HiGHS solver is available! (No size limits)")
         use_module = True
     except Exception as e:
-        print(f"✗ HiGHS not available: {e}")
+        print(f"Error: HiGHS not available: {e}")
         print("  → Install: pip3 install highspy")
         use_module = False
 
@@ -271,14 +271,14 @@ try:
         )
 
         print()
-        print("✓ Optimization completed successfully with YOUR module!")
+        print("Success: Optimization completed successfully with YOUR module!")
         print()
 
         # Save results
         output_dir = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project/TESProject/Phase 3 - Analysis"
 
         results_df.to_csv(f"{output_dir}/phase3_48hr_dispatch_results.csv", index=True)
-        print(f"✓ Results saved: phase3_48hr_dispatch_results.csv")
+        print(f"Success: Results saved: phase3_48hr_dispatch_results.csv")
 
         # Calculate metrics
         summary = {
@@ -299,20 +299,20 @@ try:
         with open(f"{output_dir}/phase3_48hr_results_summary.json", 'w') as f:
             json.dump(summary, f, indent=2)
 
-        print(f"✓ Summary saved: phase3_48hr_results_summary.json")
+        print(f"Success: Summary saved: phase3_48hr_results_summary.json")
         print()
         print("="*80)
         print("SUCCESS! Phase 3 completed with your actual Phase 2 module!")
         print("="*80)
 
 except ImportError as e:
-    print(f"✗ Could not import your module: {e}")
+    print(f"Error: Could not import the module: {e}")
     print()
     print("Using standalone HiGHS version instead...")
     use_module = False
 
 except Exception as e:
-    print(f"✗ Error running your module: {e}")
+    print(f"Error: Error running the module: {e}")
     print()
     import traceback
     traceback.print_exc()
@@ -330,7 +330,7 @@ if not use_module:
     print("RUNNING STANDALONE VERSION (HiGHS Solver)")
     print("="*80)
     print()
-    print("Note: This recreates the TES model without using your module")
+    print("Documentation: This recreates the TES model without using the module")
     print("      Use this for validation, but note it's not your Phase 2 code")
     print()
 
@@ -340,7 +340,7 @@ if not use_module:
     print("  3. Proper import paths")
     print()
     print("For now, refer to previous standalone analysis results.")
-    print("Your Phase 2 module exists and is ready to use when CPLEX is available!")
+    print("The Phase 2 module exists and is ready to use when CPLEX is available!")
 
 print()
 print("="*80)
@@ -348,12 +348,12 @@ print("PHASE 3 SETUP COMPLETE")
 print("="*80)
 print()
 print("Summary:")
-print(f"  ✓ Phase 2 module located: 06_pyomo_DTC_CPLEX_TES.py")
-print(f"  ✓ Real data loaded: gjt_working.xlsx")
-print(f"  ✓ TES parameters confirmed: {tes_params['tes_spec']}")
-print(f"  ✓ System configured: {solar_MW}MW solar, {wind_MW}MW wind, {tes_params['tes_duration']}hr TES")
+print(f"  Success: Phase 2 module located: 06_pyomo_DTC_CPLEX_TES.py")
+print(f"  Success: Real data loaded: gjt_working.xlsx")
+print(f"  Success: TES parameters confirmed: {tes_params['tes_spec']}")
+print(f"  Success: System configured: {solar_MW}MW solar, {wind_MW}MW wind, {tes_params['tes_duration']}hr TES")
 print()
 print("Next steps:")
 print("  1. Install CPLEX to run your actual module")
 print("  2. Or use standalone HiGHS results for Phase 3 presentation")
-print("  3. Your Phase 2 work is complete and correct!")
+print("  3. The Phase 2 work is complete and correct!")

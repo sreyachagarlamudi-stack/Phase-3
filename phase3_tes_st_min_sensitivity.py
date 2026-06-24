@@ -119,7 +119,7 @@ if param_col:
             }
             new_row = pd.Series(new_row_data)
             df_tes = pd.concat([df_tes, new_row.to_frame().T], ignore_index=True)
-            print("  ✓ Added tes_st_eff = 40%")
+            print("  Success: Added tes_st_eff = 40%")
 
         # Add tes_st_min if missing
         if not has_tes_st_min:
@@ -130,14 +130,14 @@ if param_col:
             }
             new_row = pd.Series(new_row_data)
             df_tes = pd.concat([df_tes, new_row.to_frame().T], ignore_index=True)
-            print("  ✓ Added tes_st_min = 40%")
+            print("  Success: Added tes_st_min = 40%")
 
         print()
 
         # Write updated sheet back to Excel
         backup_path = excel_path.replace('.xlsx', '_backup.xlsx')
         wb.save(backup_path)
-        print(f"  ✓ Created backup: {backup_path}")
+        print(f"  Success: Created backup: {backup_path}")
 
         # Clear existing data and write updated data
         for row in tes_sheet.iter_rows(min_row=2, max_row=tes_sheet.max_row):
@@ -154,7 +154,7 @@ if param_col:
                 tes_sheet.cell(row=row_idx, column=col_idx, value=value)
 
         wb.save(excel_path)
-        print(f"  ✓ Updated: {excel_path}")
+        print(f"  Success: Updated: {excel_path}")
         print()
 
 # ============================================================================
@@ -195,10 +195,10 @@ print()
 pyomo_module = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intersect Summer/TESProject/Phase 2 Python/06_pyomo_DTC_CPLEX_TES.py"
 
 if os.path.exists(pyomo_module):
-    print(f"✓ Found optimization module: {pyomo_module}")
+    print(f"Success: Found optimization module: {pyomo_module}")
     print()
 else:
-    print(f"✗ Optimization module not found at: {pyomo_module}")
+    print(f"Error: Optimization module not found at: {pyomo_module}")
     print()
     print("Searching for module...")
 
@@ -214,14 +214,14 @@ else:
             for root, dirs, files in os.walk(search_dir):
                 if "06_pyomo_DTC_CPLEX_TES.py" in files:
                     pyomo_module = os.path.join(root, "06_pyomo_DTC_CPLEX_TES.py")
-                    print(f"✓ Found at: {pyomo_module}")
+                    print(f"Success: Found at: {pyomo_module}")
                     found = True
                     break
             if found:
                 break
 
     if not found:
-        print("✗ Could not find optimization module")
+        print("Error: Could not find optimization module")
         print("  Manual run required")
         sys.exit(1)
 
@@ -237,10 +237,10 @@ print("="*80)
 print()
 
 print("COMPLETED:")
-print("  ✓ Read gjt_working.xlsx")
-print("  ✓ Checked TES sheet structure")
-print("  ✓ Added tes_st_eff and tes_st_min (if missing)")
-print("  ✓ Created backup of Excel file")
+print("  Success: Read gjt_working.xlsx")
+print("  Success: Checked TES sheet structure")
+print("  Success: Added tes_st_eff and tes_st_min (if missing)")
+print("  Success: Created backup of Excel file")
 print()
 
 print("NEXT STEPS (MANUAL):")

@@ -135,7 +135,7 @@ try:
     solver = pyo.SolverFactory('appsi_highs')
     solver.available(exception_flag=True)
 
-    print("✓ Phase 2 module and HiGHS solver ready!")
+    print("Success: Phase 2 module and HiGHS solver ready!")
     print()
 
     # Storage for results
@@ -313,7 +313,7 @@ try:
             print("  None found - need larger renewable capacity")
 
 except Exception as e:
-    print(f"✗ Error: {e}")
+    print(f"Error: Error: {e}")
     import traceback
     traceback.print_exc()
 

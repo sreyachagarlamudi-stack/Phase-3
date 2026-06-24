@@ -208,8 +208,8 @@ try:
     spec.loader.exec_module(module)
     roll_cfe = module.roll_cfe
 
-    print("✓ Module imported successfully")
-    print("✓ Using HiGHS solver (open-source, no size limits)\n")
+    print("Success: Module imported successfully")
+    print("Success: Using HiGHS solver (open-source, no size limits)\n")
 
     print("="*80)
     print("RUNNING OPTIMIZATION (THIS WILL TAKE ~30 MINUTES)")
@@ -263,11 +263,11 @@ try:
     output_dir = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 3 - Analysis"
 
     results_df.to_csv(f"{output_dir}/test_25pct_dispatch.csv", index=True)
-    print(f"✓ Saved: test_25pct_dispatch.csv")
+    print(f"Success: Saved: test_25pct_dispatch.csv")
 
     with open(f"{output_dir}/test_25pct_results.json", 'w') as f:
         json.dump(summary, f, indent=2)
-    print(f"✓ Saved: test_25pct_results.json")
+    print(f"Success: Saved: test_25pct_results.json")
 
     print()
     print("Key Metrics:")

@@ -252,4 +252,4 @@ if __name__ == "__main__":
     print(f"  Savings:          ${comparison['ira_savings_per_MWh']:.2f}/MWh ({comparison['ira_savings_pct']:.1f}%)")
     print()
 
-    print("✓ LCOE calculator ready for Phase 3 analysis!")
+    print("Success: LCOE calculator ready for Phase 3 analysis!")
