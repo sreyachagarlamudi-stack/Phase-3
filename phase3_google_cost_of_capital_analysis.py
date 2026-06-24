@@ -1,12 +1,12 @@
 """
-CRITICAL CORRECTION: Google Cost of Capital Analysis
+Google Cost of Capital Analysis
 
-User pointed out: "Cost of capital we assume 0 to little to nothing given its Google funding us"
+Assumption: Cost of capital approaches zero for corporate equity-funded projects.
 
-This is a MAJOR insight! Google uses corporate equity, not project finance.
-Standard utility discount rate (7%) is too high for tech company self-funding.
+Analysis rationale: Google utilizes corporate equity rather than traditional project finance.
+Standard utility discount rates (7%) are not applicable for self-funded tech infrastructure.
 
-This analysis shows how LCOE changes with Google's actual cost of capital.
+This analysis evaluates LCOE sensitivity to Google's corporate cost of capital.
 """
 
 import pandas as pd
