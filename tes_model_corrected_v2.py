@@ -1,7 +1,8 @@
 """
-TES Model - CORRECTED VERSION v2
+TES Model - CORRECTED VERSION v3
 Uses proper Roman-style capacity factors while waiting for actual 8760 data
 Fixes based on June 24 meeting feedback
+V3: Multiple turbine blocks (4×25 MW) for better turndown flexibility
 """
 
 import sys
@@ -13,7 +14,7 @@ import math
 from datetime import datetime
 
 print("="*80)
-print("TES ANALYSIS - CORRECTED MODEL V2")
+print("TES ANALYSIS - CORRECTED MODEL V3 (Multiple Turbine Blocks)")
 print("="*80)
 print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
 
@@ -136,7 +137,12 @@ datacenter_load_MW = 100
 solar_MW = 300
 wind_MW = 50
 tes_storage_hours = 16
-tes_discharge_MW = 100
+
+# Multiple turbine blocks for better turndown (Greg feedback)
+num_turbine_blocks = 4
+turbine_block_size_MW = 25
+tes_discharge_MW = num_turbine_blocks * turbine_block_size_MW  # 100 MW total
+
 tes_charge_MW = 100
 gas_backup_MW = 100
 
@@ -145,7 +151,7 @@ tes_storage_MWh = tes_discharge_MW * tes_storage_hours
 print("Step 4: System configuration...")
 print(f"  Solar: {solar_MW} MW")
 print(f"  Wind: {wind_MW} MW")
-print(f"  TES: {tes_storage_MWh} MWh storage, {tes_discharge_MW} MW discharge")
+print(f"  TES: {tes_storage_MWh} MWh storage, {num_turbine_blocks}×{turbine_block_size_MW} MW turbine blocks = {tes_discharge_MW} MW total")
 print(f"  Gas: {gas_backup_MW} MW")
 print()
 
@@ -163,6 +169,7 @@ load = np.ones(HOURS) * datacenter_load_MW
 tes_soc = np.zeros(HOURS + 1)
 tes_charge = np.zeros(HOURS)
 tes_discharge = np.zeros(HOURS)
+tes_blocks_active = np.zeros(HOURS)  # Track how many blocks are running
 gas_dispatch = np.zeros(HOURS)
 curtailment = np.zeros(HOURS)
 
@@ -185,15 +192,24 @@ for t in range(HOURS):
         # Deficit - use TES first (cheaper), then gas
         deficit = -surplus
 
-        # TES discharge (thermal to electric)
+        # TES discharge using multiple turbine blocks
+        # Each block operates at high efficiency (39%) when on
         tes_thermal_available = tes_soc[t]
         tes_electric_available = tes_thermal_available * tes_params['tes_turbine_eff_max']
-        tes_min_output = tes_discharge_MW * tes_params['tes_turbine_min_load']
 
-        if tes_electric_available >= tes_min_output:
-            # Use TES (it's cheaper)
-            tes_output = min(deficit, tes_discharge_MW, tes_electric_available)
+        # Calculate how many blocks to dispatch
+        blocks_needed = np.ceil(deficit / turbine_block_size_MW)
+        blocks_to_dispatch = int(min(blocks_needed, num_turbine_blocks))
+
+        # Check if we have enough thermal energy for at least one block
+        min_thermal_needed = turbine_block_size_MW / tes_params['tes_turbine_eff_max']
+
+        if tes_thermal_available >= min_thermal_needed:
+            # Dispatch blocks as needed
+            tes_output_possible = blocks_to_dispatch * turbine_block_size_MW
+            tes_output = min(deficit, tes_output_possible, tes_electric_available)
             tes_discharge[t] = tes_output / tes_params['tes_turbine_eff_max']
+            tes_blocks_active[t] = blocks_to_dispatch
             deficit -= tes_output
 
         # Use gas for remainder
@@ -251,6 +267,14 @@ print(f"  TES:   {tes_cf:.1%}")
 print(f"  Gas:   {gas_cf:.1%}")
 print()
 
+# Turbine block utilization
+print("Turbine Block Utilization:")
+for i in range(num_turbine_blocks + 1):
+    hours_at_blocks = np.sum(tes_blocks_active == i)
+    pct = hours_at_blocks / HOURS * 100
+    print(f"  {i} blocks active: {hours_at_blocks:>4} hours ({pct:>5.1f}%)")
+print()
+
 # Costs
 tes_var_cost = tes_discharge_electric * tes_marginal_cost / 1e6
 gas_var_cost = gas_annual * gas_marginal_cost / 1e6
@@ -261,9 +285,19 @@ print(f"  Gas:  ${gas_var_cost:.2f}M/year")
 print()
 
 # Save results
+block_utilization = {}
+for i in range(num_turbine_blocks + 1):
+    hours_at_blocks = int(np.sum(tes_blocks_active == i))
+    block_utilization[f'{i}_blocks'] = hours_at_blocks
+
 results = {
     'timestamp': datetime.now().isoformat(),
-    'model_version': 'corrected_v2',
+    'model_version': 'corrected_v3_multiple_blocks',
+    'turbine_config': {
+        'num_blocks': num_turbine_blocks,
+        'block_size_MW': turbine_block_size_MW,
+        'total_capacity_MW': tes_discharge_MW,
+    },
     'resource_data': {
         'solar_cf_avg': float(np.mean(solar_cf)),
         'wind_cf_avg': float(np.mean(wind_cf)),
@@ -288,16 +322,17 @@ results = {
         'tes': float(tes_cf),
         'gas': float(gas_cf),
     },
+    'block_utilization_hours': block_utilization,
     'performance': {
         'cfe_pct': float(cfe_pct),
     },
 }
 
-output_path = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 3 - Analysis/results_corrected_v2.json"
+output_path = "/Users/sreyachagarlamudi/Library/Mobile Documents/com~apple~CloudDocs/Intern Project Phase 3 - Analysis/results_corrected_v3.json"
 with open(output_path, 'w') as f:
     json.dump(results, f, indent=2)
 
-print(f"✓ Results saved to: results_corrected_v2.json")
+print(f"✓ Results saved to: results_corrected_v3.json")
 print()
 
 print("="*80)
@@ -309,4 +344,5 @@ print(f"✓ Wind CF:   18.7% → {wind_cf_actual:.1%}")
 print(f"✓ TES Cost:  $121/MWh (wrong) → ${tes_marginal_cost}/MWh (correct)")
 print(f"✓ Gas Cost:  $40/MWh (incomplete) → ${gas_marginal_cost}/MWh (with O&M)")
 print(f"✓ TES Util:  0.8% → {tes_cf:.1%}")
+print(f"✓ Turbine:   Single 100 MW (40 MW min) → {num_turbine_blocks}×{turbine_block_size_MW} MW blocks ({turbine_block_size_MW} MW min)")
 print()
