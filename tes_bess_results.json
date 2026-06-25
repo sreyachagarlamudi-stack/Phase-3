@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-25T14:35:17.020845",
+  "timestamp": "2026-06-25T14:54:08.102091",
   "model_version": "v5_tes_bess_boiler",
   "architecture": "BESS + TES + Boiler + Steam Header",
   "system_config": {
@@ -36,6 +36,11 @@
     "bess": 0.036552494194917094,
     "tes": 0.3058382310345568,
     "boiler": 9.148997141023969
+  },
+  "water_consumption": {
+    "rate_gal_per_kwh": 0.5,
+    "annual_gallons": 143742602.29206857,
+    "annual_acre_feet": 441.1298485874482
   },
   "performance": {
     "cfe_pct": 78.81973429536322,

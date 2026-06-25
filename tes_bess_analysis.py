@@ -37,11 +37,15 @@ bess_params = {
     'bess_opex_var': 0.5,  # $/MWh variable OpEx
 }
 
+# Water consumption for evaporative cooling
+water_consumption_gal_per_kwh = 0.5  # Typical range 0.4-0.7 gal/kWh for evap cooling
+
 print("Parameters loaded")
 print(f"  TES turbine OpEx: ${tes_params['tes_turbine_opex_var']}/MWh")
 print(f"  Boiler efficiency: {tes_params['boiler_efficiency']:.1%}")
 print(f"  BESS: {bess_params['bess_power_MW']} MW / {bess_params['bess_energy_MWh']} MWh")
 print(f"  BESS RTE: {bess_params['bess_rte']:.1%}")
+print(f"  Water (evap cooling): {water_consumption_gal_per_kwh} gal/kWh")
 print()
 
 # ============================================================================
@@ -277,6 +281,12 @@ load_annual = np.sum(load)
 carbon_fraction = boiler_electric / load_annual
 cfe_pct = (1 - carbon_fraction) * 100
 
+# Water consumption (evaporative cooling for steam turbine)
+# Both TES and boiler thermal go through the steam turbine
+total_turbine_output = tes_discharge_electric + boiler_electric
+water_consumption_annual_gal = total_turbine_output * 1000 * water_consumption_gal_per_kwh  # Convert MWh to kWh
+water_consumption_annual_acre_ft = water_consumption_annual_gal / 325851  # Convert gallons to acre-feet
+
 print("Dispatch complete")
 print()
 
@@ -353,6 +363,12 @@ print(f"  Boiler path: ${boiler_var_cost:.2f}M/year")
 print(f"    - Fuel:    ${boiler_fuel_annual:.2f}M/year")
 print()
 
+print("Water Consumption (Evaporative Cooling):")
+print(f"  Steam turbine output: {total_turbine_output:,.0f} MWh/year")
+print(f"  Water usage: {water_consumption_annual_gal:,.0f} gallons/year")
+print(f"  Water usage: {water_consumption_annual_acre_ft:.1f} acre-feet/year")
+print()
+
 # Save results
 results = {
     'timestamp': datetime.now().isoformat(),
@@ -392,6 +408,11 @@ results = {
         'bess': float(bess_var_cost),
         'tes': float(tes_var_cost),
         'boiler': float(boiler_var_cost),
+    },
+    'water_consumption': {
+        'rate_gal_per_kwh': water_consumption_gal_per_kwh,
+        'annual_gallons': float(water_consumption_annual_gal),
+        'annual_acre_feet': float(water_consumption_annual_acre_ft),
     },
     'performance': {
         'cfe_pct': float(cfe_pct),
