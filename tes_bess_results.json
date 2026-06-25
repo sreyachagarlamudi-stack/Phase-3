@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-06-24T17:06:46.351844",
+  "model_version": "v5_tes_bess_boiler",
+  "architecture": "BESS + TES + Boiler + Steam Header",
+  "system_config": {
+    "solar_MW": 300,
+    "wind_MW": 50,
+    "bess_MW": 50,
+    "bess_MWh": 200,
+    "tes_MWh": 1600,
+    "turbine_blocks": 4,
+    "block_size_MW": 25
+  },
+  "marginal_costs": {
+    "bess": 0.5,
+    "tes": 3.0,
+    "boiler": 49.310338259746004
+  },
+  "annual_MWh": {
+    "solar": 814680.0,
+    "wind": 219000.0,
+    "bess_discharge": 73104.9883898342,
+    "tes_output": 101946.07701151894,
+    "boiler_output": 185539.1275726182,
+    "curtailment": 159327.14275981783,
+    "load": 876000.0
+  },
+  "capacity_factors": {
+    "solar": 0.31,
+    "wind": 0.5,
+    "bess": 0.16690636618683605,
+    "tes": 0.11637680024145998,
+    "boiler": 0.2118026570463678
+  },
+  "variable_costs_M_per_year": {
+    "bess": 0.036552494194917094,
+    "tes": 0.3058382310345568,
+    "boiler": 9.148997141023969
+  },
+  "performance": {
+    "cfe_pct": 137.9829983334878,
+    "bess_cycles_per_year": 365.52494194917097
+  }
+}
