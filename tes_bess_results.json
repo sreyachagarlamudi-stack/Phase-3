@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-25T15:01:07.368790",
+  "timestamp": "2026-06-25T16:22:53.167774",
   "model_version": "v5_tes_bess_boiler",
   "architecture": "BESS + TES + Boiler + Steam Header",
   "system_config": {
@@ -38,25 +38,14 @@
     "boiler": 9.148997141023969
   },
   "water_consumption": {
-    "evap_cooling": {
-      "rate_gal_per_kwh": 0.48,
-      "annual_gallons": 137992898.2003858,
-      "annual_acre_feet": 423.4846546439502,
-      "eliminable": true
-    },
-    "blowdown": {
-      "rate_gal_per_kwh": 0.03,
-      "annual_gallons": 8624556.137524113,
-      "annual_acre_feet": 26.467790915246887,
-      "eliminable": false
-    },
-    "total_with_evap_cooling": {
-      "annual_gallons": 146617454.33790994,
-      "annual_acre_feet": 449.9524455591971
-    },
-    "total_with_dry_cooling": {
-      "annual_gallons": 8624556.137524113,
-      "annual_acre_feet": 26.467790915246887
+    "cooling_type": "air_cooled_condensers",
+    "turbine_output_MWh": 287485.20458413713,
+    "makeup_water": {
+      "rate_gal_per_kwh": 0.0186,
+      "annual_gallons": 5347224.805264951,
+      "annual_acre_feet": 16.41003036745307,
+      "includes": "blowdown + BFW treatment losses",
+      "data_source": "ammonia project (1.1 tph for 14.2 MW)"
     }
   },
   "performance": {

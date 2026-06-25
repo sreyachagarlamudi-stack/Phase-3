@@ -37,18 +37,20 @@ bess_params = {
     'bess_opex_var': 0.5,  # $/MWh variable OpEx
 }
 
-# Water consumption for steam turbine
-evap_cooling_gal_per_kwh = 0.48  # Evaporative cooling (can be replaced with dry cooling)
-blowdown_gal_per_kwh = 0.03      # Blowdown water (unavoidable, maintains water quality)
-total_water_gal_per_kwh = evap_cooling_gal_per_kwh + blowdown_gal_per_kwh
+# Water consumption for steam turbine with air cooled condensers
+# Based on ammonia project data: 1.1 tph makeup water for 14.2 MW
+# 1.1 tons/hr = 2200 lbs/hr = 263.8 gal/hr
+# 14.2 MW * 1 hr = 14,200 kWh
+# 263.8 gal / 14,200 kWh = 0.0186 gal/kWh
+makeup_water_gal_per_kwh = 0.0186  # Makeup water for air cooled condensers (blowdown + treatment losses)
 
 print("Parameters loaded")
 print(f"  TES turbine OpEx: ${tes_params['tes_turbine_opex_var']}/MWh")
 print(f"  Boiler efficiency: {tes_params['boiler_efficiency']:.1%}")
 print(f"  BESS: {bess_params['bess_power_MW']} MW / {bess_params['bess_energy_MWh']} MWh")
 print(f"  BESS RTE: {bess_params['bess_rte']:.1%}")
-print(f"  Water - Evap cooling: {evap_cooling_gal_per_kwh} gal/kWh")
-print(f"  Water - Blowdown: {blowdown_gal_per_kwh} gal/kWh")
+print(f"  Cooling: Air cooled condensers")
+print(f"  Makeup water: {makeup_water_gal_per_kwh} gal/kWh")
 print()
 
 # ============================================================================
@@ -284,26 +286,14 @@ load_annual = np.sum(load)
 carbon_fraction = boiler_electric / load_annual
 cfe_pct = (1 - carbon_fraction) * 100
 
-# Water consumption for steam turbine
+# Water consumption for steam turbine (air cooled condensers)
 # Both TES and boiler thermal go through the steam turbine
 total_turbine_output = tes_discharge_electric + boiler_electric
 turbine_output_kwh = total_turbine_output * 1000  # Convert MWh to kWh
 
-# Evaporative cooling (can be eliminated with dry cooling)
-evap_cooling_annual_gal = turbine_output_kwh * evap_cooling_gal_per_kwh
-evap_cooling_annual_acre_ft = evap_cooling_annual_gal / 325851
-
-# Blowdown water (unavoidable)
-blowdown_annual_gal = turbine_output_kwh * blowdown_gal_per_kwh
-blowdown_annual_acre_ft = blowdown_annual_gal / 325851
-
-# Total water consumption
-total_water_annual_gal = evap_cooling_annual_gal + blowdown_annual_gal
-total_water_annual_acre_ft = total_water_annual_gal / 325851
-
-# Water consumption with dry cooling (blowdown only)
-dry_cooling_water_annual_gal = blowdown_annual_gal
-dry_cooling_water_annual_acre_ft = blowdown_annual_acre_ft
+# Makeup water for air cooled condensers (includes blowdown + BFW treatment losses)
+makeup_water_annual_gal = turbine_output_kwh * makeup_water_gal_per_kwh
+makeup_water_annual_acre_ft = makeup_water_annual_gal / 325851
 
 print("Dispatch complete")
 print()
@@ -381,19 +371,10 @@ print(f"  Boiler path: ${boiler_var_cost:.2f}M/year")
 print(f"    - Fuel:    ${boiler_fuel_annual:.2f}M/year")
 print()
 
-print("Water Consumption (Steam Turbine):")
+print("Water Consumption (Steam Turbine with Air Cooled Condensers):")
 print(f"  Steam turbine output: {total_turbine_output:,.0f} MWh/year")
-print()
-print(f"  Evaporative cooling:")
-print(f"    {evap_cooling_annual_gal:,.0f} gallons/year ({evap_cooling_annual_acre_ft:.1f} acre-feet/year)")
-print(f"    Can be eliminated with dry cooling")
-print()
-print(f"  Blowdown water:")
-print(f"    {blowdown_annual_gal:,.0f} gallons/year ({blowdown_annual_acre_ft:.1f} acre-feet/year)")
-print(f"    Unavoidable (maintains water quality)")
-print()
-print(f"  Total with evap cooling: {total_water_annual_gal:,.0f} gallons/year ({total_water_annual_acre_ft:.1f} acre-feet/year)")
-print(f"  Total with dry cooling: {dry_cooling_water_annual_gal:,.0f} gallons/year ({dry_cooling_water_annual_acre_ft:.1f} acre-feet/year)")
+print(f"  Makeup water (blowdown + BFW treatment): {makeup_water_annual_gal:,.0f} gallons/year ({makeup_water_annual_acre_ft:.1f} acre-feet/year)")
+print(f"  Rate: {makeup_water_gal_per_kwh:.4f} gal/kWh")
 print()
 
 # Save results
@@ -437,25 +418,14 @@ results = {
         'boiler': float(boiler_var_cost),
     },
     'water_consumption': {
-        'evap_cooling': {
-            'rate_gal_per_kwh': evap_cooling_gal_per_kwh,
-            'annual_gallons': float(evap_cooling_annual_gal),
-            'annual_acre_feet': float(evap_cooling_annual_acre_ft),
-            'eliminable': True,
-        },
-        'blowdown': {
-            'rate_gal_per_kwh': blowdown_gal_per_kwh,
-            'annual_gallons': float(blowdown_annual_gal),
-            'annual_acre_feet': float(blowdown_annual_acre_ft),
-            'eliminable': False,
-        },
-        'total_with_evap_cooling': {
-            'annual_gallons': float(total_water_annual_gal),
-            'annual_acre_feet': float(total_water_annual_acre_ft),
-        },
-        'total_with_dry_cooling': {
-            'annual_gallons': float(dry_cooling_water_annual_gal),
-            'annual_acre_feet': float(dry_cooling_water_annual_acre_ft),
+        'cooling_type': 'air_cooled_condensers',
+        'turbine_output_MWh': float(total_turbine_output),
+        'makeup_water': {
+            'rate_gal_per_kwh': makeup_water_gal_per_kwh,
+            'annual_gallons': float(makeup_water_annual_gal),
+            'annual_acre_feet': float(makeup_water_annual_acre_ft),
+            'includes': 'blowdown + BFW treatment losses',
+            'data_source': 'ammonia project (1.1 tph for 14.2 MW)',
         },
     },
     'performance': {
