@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-24T17:06:46.351844",
+  "timestamp": "2026-06-25T14:35:17.020845",
   "model_version": "v5_tes_bess_boiler",
   "architecture": "BESS + TES + Boiler + Steam Header",
   "system_config": {
@@ -38,7 +38,7 @@
     "boiler": 9.148997141023969
   },
   "performance": {
-    "cfe_pct": 137.9829983334878,
+    "cfe_pct": 78.81973429536322,
     "bess_cycles_per_year": 365.52494194917097
   }
 }

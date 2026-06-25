@@ -273,7 +273,9 @@ boiler_electric = np.sum(boiler_thermal * turbine_efficiency)
 curtail_annual = np.sum(curtailment)
 load_annual = np.sum(load)
 
-cfe_pct = (solar_annual + wind_annual + tes_discharge_electric + bess_discharge_annual) / load_annual * 100
+# CFE calculation: 1 - Ct where Ct = carbon kWh / total kWh
+carbon_fraction = boiler_electric / load_annual
+cfe_pct = (1 - carbon_fraction) * 100
 
 print("Dispatch complete")
 print()
