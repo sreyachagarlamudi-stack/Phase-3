@@ -29,6 +29,9 @@ tes_params = {}
 for idx, row in tes_params_df.iterrows():
     tes_params[row['Parameter']] = row['Value']
 
+# Override boiler efficiency
+tes_params['boiler_efficiency'] = 0.90
+
 # BESS parameters
 bess_params = {
     'bess_power_MW': 50,  # Power capacity

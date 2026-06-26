@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-25T16:22:53.167774",
+  "timestamp": "2026-06-26T08:57:33.096322",
   "model_version": "v5_tes_bess_boiler",
   "architecture": "BESS + TES + Boiler + Steam Header",
   "system_config": {
@@ -14,7 +14,7 @@
   "marginal_costs": {
     "bess": 0.5,
     "tes": 3.0,
-    "boiler": 49.310338259746004
+    "boiler": 47.02244197466041
   },
   "annual_MWh": {
     "solar": 814680.0,
@@ -35,7 +35,7 @@
   "variable_costs_M_per_year": {
     "bess": 0.036552494194917094,
     "tes": 0.3058382310345568,
-    "boiler": 9.148997141023969
+    "boiler": 8.724502860312555
   },
   "water_consumption": {
     "cooling_type": "air_cooled_condensers",
